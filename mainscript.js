@@ -735,7 +735,6 @@ $("#cropB").on("click", userClickedB);
 
 //>>>>>>>>>>>>>>>>>> 4. User clicks "grow" button. Results appear. >>>>>>>>>>>>>>>>>>>>>>>>
 
-
 function weatherResults () { //triggered by #grow click, runs updateGame with correct arguments
 
 	//Show weather results line on graph ("resultsLine")
@@ -754,6 +753,8 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 		$("#rain").addClass("displayWeather").removeClass("hidden").animate({opacity: displayOpacity});
 		$("#sun").addClass("displayWeather").removeClass("hidden").animate({opacity: 1-displayOpacity});
 	};
+
+	displayWeather(weatherOpacity);
 
 	// A. Crop A outcomes
 	if (cropchoice === "cropA") {
