@@ -779,6 +779,7 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 
 		$("#rain").addClass("displayWeather").removeClass("hidden").animate({opacity: displayRain});
 		$("#sun").addClass("displayWeather").removeClass("hidden").animate({opacity: displaySun});
+		alert("rain opacity is: " + rainOpacity + " sun opacity is: " + sunOpacity);
 	};
 
 	displayWeather(rainOpacity, sunOpacity);
