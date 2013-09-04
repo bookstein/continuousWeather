@@ -863,6 +863,20 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 		}
 	}
 
+	function fadeWeather () {
+		//setTimeout calls function after a certain time; currently 3000 ms
+		rainOpacity = 0;
+		sunOpacity = 0;
+	   	$("#sun, #rain").removeClass("displayWeather").addClass("hidden");
+	   	$(".croprows").addClass("hidden");
+	   	$(".plant").removeClass("select");
+	   	$(".plant, .plant_img, #grow").removeClass("hidden").animate({opacity: 1}, 1000);
+	   	cropchoice = ""; // resets value of cropchoice to ""
+	   	$(".jqplot-overlayCanvas-canvas").css('z-index', '-1'); //resets graph resultsLine to hidden
+	};
+
+	setTimeout(fadeWeather, 4000);
+
 }; // end of weatherResults
 
 // >>>>>>>>>>> 5. Game updates and loops back to the beginning of the code >>>>>>>>>>>>>>>>>>>
@@ -964,16 +978,6 @@ function updateGame (beta, maxpayout, maxweather) { //this function is called an
 
 	displayResultsDialog();
 
-	function fadeWeather () {
-		//setTimeout calls function after a certain time; currently 3000 ms
-	   	$("#sun, #rain").removeClass("displayWeather").addClass("hidden").animate({opacity: 0});
-	   	$(".croprows").addClass("hidden");
-	   	$(".plant").removeClass("select");
-	   	$(".plant, .plant_img, #grow").removeClass("hidden").animate({opacity: 1}, 1000);
-	   	cropchoice = ""; // resets value of cropchoice to ""
-	   	$(".jqplot-overlayCanvas-canvas").css('z-index', '-1'); //resets graph resultsLine to hidden
-	};
-
 	function addTurn () {
 		turn = turn + 1;
 		$("#turns_counter").html("<h5>" + turn + "/" + maxturn + "</h5>");
@@ -981,8 +985,6 @@ function updateGame (beta, maxpayout, maxweather) { //this function is called an
 		//alert("gameWeather is now " + gameWeather[turn] + " because it is turn #" + turn);
 	};
 
-
-		setTimeout(fadeWeather, 4000);
 		setTimeout(addTurn, 4000);
 
 		//Moved these variables inside newScore function because they only matter for bonus thresholds being crossed
