@@ -752,32 +752,36 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 
 	//Identify weather display labels
 	var weatherReport = "";
+	var rainOpacity;
+	var sunOpacity;
 
+	// hide buttons
 	disableGrowButton();
-
 	$(".plant, .plant_img, #grow").addClass("hidden").css("opacity", 0);
 
-	var rainOpacity = function () {
-			if (gameWeather[turn] >= gameRoots.topRoot) {
-				return 1;
+	function weatherOpacity () {
+
+		if (gameWeather[turn] >= gameRoots.topRoot) {
+				return rainOpacity = 1, sunOpacity = 0;
 			}
 
 			else if (gameWeather[turn] > gameRoots.bottomRoot && gameWeather[turn] < gameRoots.topRoot) {
-				return gameWeather[turn]/1000;
+				return rainOpacity = gameWeather[turn]/1000, sunOpacity = 1-rainOpacity;
 			}
 
 			else if (gameWeather[turn] <= gameRoots.bottomRoot) {
-				return 0;
+				return rainOpacity = 0, sunOpacity = 1;
 			}
 	};
 
-	function displayWeather (displayOpacity) {
+	function displayWeather (displayRain, displaySun) {
+		weatherOpacity();
 
-		$("#rain").addClass("displayWeather").removeClass("hidden").animate({opacity: displayOpacity});
-		$("#sun").addClass("displayWeather").removeClass("hidden").animate({opacity: 1-displayOpacity});
+		$("#rain").addClass("displayWeather").removeClass("hidden").animate({opacity: displayRain});
+		$("#sun").addClass("displayWeather").removeClass("hidden").animate({opacity: displaySun});
 	};
 
-	displayWeather(rainOpacity);
+	displayWeather(rainOpacity, sunOpacity);
 
 	// A. Crop A outcomes
 	if (cropchoice === "cropA") {
