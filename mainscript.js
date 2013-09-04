@@ -191,8 +191,12 @@ $(function initializeGame () {
 
 			var rootArray = [root1A, root2A, root1B, root2B];
 			var maxRoot = Math.max.apply(Math, rootArray);
+			var minRoot = Math.min.apply(Math, rootArray);
 
 			upperBoundX = Math.ceil(maxRoot/100)*100;
+
+			gameRoots["topRoot"] = maxRoot;
+			gameRoots["bottomRoot"] = minRoot;
 
 			return upperBoundX;
 		};
