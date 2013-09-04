@@ -752,18 +752,32 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 
 	//Identify weather display labels
 	var weatherReport = "";
-	var weatherOpacity = gameWeather[turn]/1000;
 
 	disableGrowButton();
 
 	$(".plant, .plant_img, #grow").addClass("hidden").css("opacity", 0);
 
+	var rainOpacity = function () {
+			if (gameWeather[turn] >= gameRoots.topRoot) {
+				return 1;
+			}
+
+			else if (gameWeather[turn] > gameRoots.bottomRoot && gameWeather[turn] < gameRoots.topRoot) {
+				return gameWeather[turn]/1000;
+			}
+
+			else if (gameWeather[turn] <= gameRoots.bottomRoot) {
+				return 0;
+			}
+	};
+
 	function displayWeather (displayOpacity) {
+
 		$("#rain").addClass("displayWeather").removeClass("hidden").animate({opacity: displayOpacity});
 		$("#sun").addClass("displayWeather").removeClass("hidden").animate({opacity: 1-displayOpacity});
 	};
 
-	displayWeather(weatherOpacity);
+	displayWeather(rainOpacity);
 
 	// A. Crop A outcomes
 	if (cropchoice === "cropA") {
