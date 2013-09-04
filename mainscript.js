@@ -786,7 +786,6 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 
 	// A. Crop A outcomes
 	if (cropchoice === "cropA") {
-		updateGame(betaA, maxApayout, maxAweather); // call updateGame with values for crop A
 
 		// A1. gameWeather is wet
 
@@ -822,11 +821,12 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 		else if (gameWeather[turn] < (maxAweather + .33*Math.sqrt(maxApayout/(-betaA))) && gameWeather[turn] >= (maxAweather - .33*Math.sqrt(maxApayout/(-betaA)))) {
 			$("#rowsCropA").removeClass("hidden");
 		}
+
+		updateGame(betaA, maxApayout, maxAweather); // call updateGame with values for crop A
 	}
 
 	// 2. Crop B outcomes
 	else if (cropchoice === "cropB") {
-		updateGame(betaB, maxBpayout, maxBweather); // call updateGame with values for crop B
 
 		// B1. gameWeather is wet
 
@@ -861,6 +861,8 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 		else if (gameWeather[turn] < (maxBweather + .33*Math.sqrt(maxBpayout/(-betaA))) && gameWeather[turn] >= (maxBweather - .33*Math.sqrt(maxBpayout/(-betaB)))) {
 			$("#rowsCropB").removeClass("hidden");
 		}
+
+		updateGame(betaB, maxBpayout, maxBweather); // call updateGame with values for crop B
 	}
 
 	function fadeWeather () {
