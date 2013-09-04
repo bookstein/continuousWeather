@@ -820,6 +820,7 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 		// A3. gameWeather is normal
 		else if (gameWeather[turn] < (maxAweather + .33*Math.sqrt(maxApayout/(-betaA))) && gameWeather[turn] >= (maxAweather - .33*Math.sqrt(maxApayout/(-betaA)))) {
 			$("#rowsCropA").removeClass("hidden");
+			weatherReport = "optimally wet and dry";
 		}
 
 		updateGame(betaA, maxApayout, maxAweather); // call updateGame with values for crop A
@@ -860,6 +861,7 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 		//B3 Weather is in normal range
 		else if (gameWeather[turn] < (maxBweather + .33*Math.sqrt(maxBpayout/(-betaA))) && gameWeather[turn] >= (maxBweather - .33*Math.sqrt(maxBpayout/(-betaB)))) {
 			$("#rowsCropB").removeClass("hidden");
+			weatherReport = "optimally wet and dry";
 		}
 
 		updateGame(betaB, maxBpayout, maxBweather); // call updateGame with values for crop B
