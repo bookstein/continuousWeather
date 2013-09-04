@@ -87,6 +87,11 @@ $(document).ready(function(){
 		{mean: 150, std_dev: 75}  //50
 	];
 
+	// Roots of payout parabolas
+	gameRoots = {
+		topRoot: 0,
+		bottomRoot: 0
+	};
 
 	// Set bonus payments
 	bonusOneDollars = 1.25;
