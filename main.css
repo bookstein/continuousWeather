@@ -156,8 +156,6 @@ header > h1 {
 .results {
 	text-align: center;
 	height: auto !important;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .glow {
