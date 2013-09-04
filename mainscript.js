@@ -15,6 +15,7 @@ $(document).ready(function(){
 
 	cropchoice = "";
 	gameWeather = [];
+	weatherReport = "";
 
 	// Set number of turns per game
     maxturn = 50;
@@ -751,7 +752,6 @@ function weatherResults () { //triggered by #grow click, runs updateGame with co
 	$(".jqplot-overlayCanvas-canvas").css('z-index', '3');
 
 	//Identify weather display labels
-	var weatherReport = "";
 	var rainOpacity;
 	var sunOpacity;
 
